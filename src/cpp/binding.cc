@@ -51,12 +51,12 @@ class async_stub : public bsdiff_dat {
   }
 
   ~async_stub() {
-    curHandle.Dispose();
-    refHandle.Dispose();
-    ctrlHandle.Dispose();
-    diffHandle.Dispose();
-    xtraHandle.Dispose();
-    callback.Dispose();
+    curHandle.Reset();
+    refHandle.Reset();
+    ctrlHandle.Reset();
+    diffHandle.Reset();
+    xtraHandle.Reset();
+    callback.Reset();
   }
 
 };
