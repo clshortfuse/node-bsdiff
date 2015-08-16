@@ -62,12 +62,12 @@ class async_stub : public bsdiff_dat {
 };
 
 static inline Handle<Value> ThrowTypeError(const char *err) {
-  return ThrowException(Exception::TypeError(String::New(err)));
+  return ThrowException(Exception::TypeError(String::NewFromOneByte(err)));
 }
 
 static inline void Error(async_stub *shim) {
   const char *msg = shim->err == -1 ? "Corrupt data" : "Internal error";
-  Handle<Value> argv[] = { Exception::Error(String::New(msg)) };
+  Handle<Value> argv[] = { Exception::Error(String::NewFromOneByte(msg)) };
   TryCatch tryCatch;
   shim->callback->Call(Context::GetCurrent()->Global(), 1, argv);
   if (tryCatch.HasCaught()) FatalException(tryCatch);
